@@ -9,6 +9,13 @@
       type: "service"
       required: true
       default: "es/elasticsearch-clients"
+    - variable: kibana_port
+      description: "Port for accessing kibana"
+      label: "Kibana Port:"
+      type: "int"
+      required: true
+      default: 80
+
 nginx-proxy:
   metadata:
     nginx:
