@@ -96,7 +96,7 @@ elasticsearch-base-clients:
 
 
 kopf:
-  image: sandinh/kopf:2.1.2
+  image: sandinh/kopf:2.1.2-1
   ports:
     - "80:80"
   environment:
