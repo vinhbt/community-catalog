@@ -15,12 +15,12 @@ elasticsearch-datavolume-masters:
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
 elasticsearch-base-master:
   labels:
     elasticsearch.master.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
   net: "container:elasticsearch-masters"
   volumes_from:
     - elasticsearch-datavolume-masters
@@ -48,12 +48,12 @@ elasticsearch-datavolume-datanode:
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
 elasticsearch-base-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -82,12 +82,12 @@ elasticsearch-datavolume-clients:
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
 elasticsearch-base-clients:
   labels:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: elasticsearch:2.2.1
+  image: elasticsearch:2.3.3
   volumes_from:
     - elasticsearch-datavolume-clients
   net: "container:elasticsearch-clients"
@@ -96,7 +96,7 @@ elasticsearch-base-clients:
 
 
 kopf:
-  image: rancher/kopf:v0.4.0
+  image: sandinh/kopf:2.1.2
   ports:
     - "80:80"
   environment:
