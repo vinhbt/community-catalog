@@ -36,8 +36,7 @@
       required: true
       default: |
         elasticsearch {
-          host => "elasticsearch"
-          protocol => "http"
+          hosts => "elasticsearch"
           index => "logstash-%{+YYYY.MM.dd}"
         }
     - variable: "elasticsearch_link"
