@@ -102,7 +102,7 @@ kopf:
     KOPF_SERVER_NAME: 'es.dev'
     KOPF_ES_SERVERS: 'es-clients:9200'
     KOPF_BASIC_AUTH_LOGIN: admin
-    KOPF_BASIC_AUTH_PASSWORD: ${kopf_port}
+    KOPF_BASIC_AUTH_PASSWORD: ${kopf_pw}
   labels:
     io.rancher.container.hostname_override: container_name
   links:
