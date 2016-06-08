@@ -1,0 +1,13 @@
+mosquitto-conf:
+  image: sandinh/mosquitto-conf:1.4.8
+  labels:
+    io.rancher.container.hostname_override: container_name
+mosquitto:
+  ports:
+  - 1883:1883
+  image: sandinh/mosquitto:1.4.8
+  volumes_from:
+    - mosquitto-conf
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: mosquitto-conf

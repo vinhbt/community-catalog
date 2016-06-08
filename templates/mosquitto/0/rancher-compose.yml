@@ -1,0 +1,38 @@
+.catalog:
+  name: "Mosquitto"
+  version: "1.4.8"
+  description: "Mosquitto MQTT server"
+  questions:
+    - variable: "mosquitto_username"
+      description: "Default username for mosquitto auth"
+      label: "Mosquitto username:"
+      type: "string"
+      required: true
+      default: "admin"
+    - variable: "mosquitto_password"
+      description: "Default password for mosquitto auth"
+      label: "Mosquitto password:"
+      type: "string"
+      required: true
+      default: '$$6$$9fg/ocPdmXjiCuYn$$i1TZ3v/4EooliIAskHZ/YS4/go36QRxsUYrZKf1eYBzud/LXffSv5f1A522ETiMByZlUd+O1J/4uaq0K0E3aGw=='
+
+mosquitto:
+  metadata:
+    mosquitto:
+      conf:
+        max:
+          inflight:
+            messages: 50
+        message:
+          size:
+            limit: 1024
+        persistent:
+          client:
+            expiration: "7d"
+        allow:
+          duplicate:
+            messages: true
+          anonymous: false
+      users:
+        - username: ${mosquitto_username}
+          password: ${mosquitto_password}

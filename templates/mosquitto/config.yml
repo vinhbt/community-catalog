@@ -1,0 +1,5 @@
+name: Mosquitto
+description: |
+  Mosquitto MQTT server
+version: 1.4.8
+category: MQTT
