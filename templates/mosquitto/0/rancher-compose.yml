@@ -1,6 +1,6 @@
 .catalog:
   name: "Mosquitto"
-  version: "1.4.8"
+  version: "1.4.8-2"
   description: "Mosquitto MQTT server"
   questions:
     - variable: "mosquitto_username"
@@ -23,15 +23,19 @@ mosquitto:
         max:
           inflight:
             messages: 50
+          queued:
+            messages: 500
         message:
           size:
             limit: 1024
         persistent:
           client:
             expiration: "7d"
+        connection:
+          messages: false
+        log:
+          timestamp: false
         allow:
-          duplicate:
-            messages: true
           anonymous: false
       users:
         - username: ${mosquitto_username}
