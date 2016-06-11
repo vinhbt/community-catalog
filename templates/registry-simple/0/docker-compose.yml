@@ -1,0 +1,30 @@
+frontend:
+  ports:
+  - ${PPORT}:80/tcp
+  environment:
+    ENV_DOCKER_REGISTRY_HOST: registry
+    ENV_DOCKER_REGISTRY_PORT: '5000'
+    ENV_DOCKER_REGISTRY_USE_SSL: '1'
+  labels:
+    io.rancher.container.pull_image: always
+  image: sandinh/docker-registry-frontend:v2
+  links:
+  - 'registry:'
+registry:
+  ports:
+  - ${RPORT}:5000/tcp
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+    REGISTRY_HTTP_TLS_KEY: /certs/privkey.pem
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+  domainname: ${DOMAIN}
+  labels:
+    io.rancher.container.pull_image: always
+  image: registry:2.4.1
+  volumes:
+  - ${DIR}/data:/var/lib/registry
+  - ${DIR}/certs:/certs
+  - ${DIR}/auth:/auth
