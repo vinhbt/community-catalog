@@ -74,15 +74,15 @@
           description: "Set the initial number of client nodes"
           default: 1
 
-        - variable: kopf_port
-          description: "Port for accessing kopf"
-          label: "kopf port:"
+        - variable: cerebro_port
+          description: "Port for accessing cerebro"
+          label: "cerebro port:"
           type: "int"
           required: true
-          default: 80
-        - variable: kopf_pw
-          description: "kopf basic auth [encrypted password](https://github.com/rancher/catalog-dockerfiles/blob/master/elasticsearch/containers/0.4.0/kopf/README.md#env-variables)"
-          label: "kopf password:"
+          default: 9000
+        - variable: cerebro_pw
+          description: "cerebro password"
+          label: "cerebro password:"
           type: "string"
           required: true
 

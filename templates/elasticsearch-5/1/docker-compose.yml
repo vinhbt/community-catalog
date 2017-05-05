@@ -98,14 +98,14 @@ services:
             - es-storage-volume:/usr/share/elasticsearch/data
 
     kopf:
-      image: sandinh/kopf:2.1.2-1
+      image: r.bennuoc.com/sd/sd-cerebro:1.0
       ports:
-        - ${kopf_port}:80
+        - ${cerebro_port}:9000
       environment:
-        KOPF_SERVER_NAME: ${cluster_name}
-        KOPF_ES_SERVERS: 'es-client:9200'
-        KOPF_BASIC_AUTH_LOGIN: admin
-        KOPF_BASIC_AUTH_PASSWORD: ${kopf_pw}
+        SERVER_NAME: ${cluster_name}
+        ES_SERVERS: "http://es-client:9200"
+        BASIC_AUTH_LOGIN: admin
+        BASIC_AUTH_PASSWORD: ${cerebro_pw}
       labels:
         io.rancher.container.hostname_override: container_name
       links:
