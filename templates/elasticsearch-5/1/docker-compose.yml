@@ -97,7 +97,7 @@ services:
         volumes: 
             - es-storage-volume:/usr/share/elasticsearch/data
 
-    kopf:
+    cerebro:
       image: r.bennuoc.com/sd/sd-cerebro:1.0
       ports:
         - ${cerebro_port}:9000
