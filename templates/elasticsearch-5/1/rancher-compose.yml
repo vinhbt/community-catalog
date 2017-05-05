@@ -79,12 +79,13 @@
           label: "kopf port:"
           type: "int"
           required: true
-          default: 8000
+          default: 80
         - variable: kopf_pw
           description: "kopf basic auth [encrypted password](https://github.com/rancher/catalog-dockerfiles/blob/master/elasticsearch/containers/0.4.0/kopf/README.md#env-variables)"
           label: "kopf password:"
           type: "string"
           required: true
+
 
 es-master:
   scale: ${minimum_master_nodes}
