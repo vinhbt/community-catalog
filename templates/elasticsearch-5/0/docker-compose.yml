@@ -97,6 +97,20 @@ services:
         volumes: 
             - es-storage-volume:/usr/share/elasticsearch/data
 
+    kopf:
+      image: sandinh/kopf:2.1.2-1
+      ports:
+        - ${kopf_port}:80
+      environment:
+        KOPF_SERVER_NAME: ${cluster_name}
+        KOPF_ES_SERVERS: 'es-client:9200'
+        KOPF_BASIC_AUTH_LOGIN: admin
+        KOPF_BASIC_AUTH_PASSWORD: ${kopf_pw}
+      labels:
+        io.rancher.container.hostname_override: container_name
+      links:
+        - elasticsearch-clients:es-client
+
 volumes:
   es-storage-volume:
     driver: local
