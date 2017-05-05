@@ -100,7 +100,7 @@ services:
     kopf:
       image: sandinh/kopf:2.1.2-1
       ports:
-        - ${kopf_port}:80
+        - ${kopf_port}:8000
       environment:
         KOPF_SERVER_NAME: ${cluster_name}
         KOPF_ES_SERVERS: 'es-client:9200'
