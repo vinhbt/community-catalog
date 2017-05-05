@@ -109,7 +109,7 @@ services:
       labels:
         io.rancher.container.hostname_override: container_name
       links:
-        - es-client:es-clients
+        - es-client:es-client
 
 volumes:
   es-storage-volume:
